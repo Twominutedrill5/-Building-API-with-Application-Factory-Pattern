@@ -1,5 +1,6 @@
+
 from flask import Flask
-from .extensions import db, ma
+from .extensions import db, ma, limiter, cache
 from .blueprints.customers import customers_bp
 from .blueprints.mechanics import mechanics_bp
 from .blueprints.service_tickets import service_tickets_bp
@@ -11,6 +12,8 @@ def create_app(config_name):
 
     db.init_app(app)
     ma.init_app(app)
+    limiter.init_app(app)
+    cache.init_app(app)
 
     app.register_blueprint(customers_bp, url_prefix='/customers')
     app.register_blueprint(mechanics_bp, url_prefix='/mechanics')

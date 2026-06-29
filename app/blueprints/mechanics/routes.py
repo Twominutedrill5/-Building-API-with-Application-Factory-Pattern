@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.extensions import db
 from app.models import Mechanic
 from .schemas import mechanic_schema, mechanics_schema
+from app.extensions import limiter, cache
 
 mechanics_bp = Blueprint('mechanics', __name__)
 
@@ -29,6 +30,8 @@ def create_mechanic():
 
 
 @mechanics_bp.route('/', methods=['GET'])
+@cache.cached(timeout=60)  # Cache the response for 60 seconds
+@limiter.limit("3 per hour")
 def get_mechanics():
     return mechanics_schema.jsonify(Mechanic.query.all()), 200
 
