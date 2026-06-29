@@ -1,0 +1,223 @@
+{
+  "info": {
+    "name": "Mechanic Shop API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Alex\",\n  \"last_name\": \"Rivera\",\n  \"email\": \"alex@example.com\",\n  \"phone\": \"555-0101\",\n  \"address\": \"123 Main St\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Customers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/customers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Customer",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/customers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"phone\": \"555-0199\"\n}" },
+            "url": {
+              "raw": "{{baseUrl}}/customers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/customers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicles",
+      "item": [
+        {
+          "name": "Create Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": 1,\n  \"vin\": \"1HGCM82633A123456\",\n  \"year\": 2020,\n  \"make\": \"Honda\",\n  \"model\": \"Civic\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers/vehicles",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Get Vehicles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/customers/vehicles",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", "vehicles"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mechanics",
+      "item": [
+        {
+          "name": "Create Mechanic",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jordan\",\n  \"email\": \"jordan@example.com\",\n  \"phone\": \"555-0102\",\n  \"address\": \"456 Oak Ave\",\n  \"salary\": 65000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mechanics/",
+              "host": ["{{baseUrl}}"],
+              "path": ["mechanics", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Mechanics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/mechanics/",
+              "host": ["{{baseUrl}}"],
+              "path": ["mechanics", ""]
+            }
+          }
+        },
+        {
+          "name": "Update Mechanic",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"salary\": 70000\n}" },
+            "url": {
+              "raw": "{{baseUrl}}/mechanics/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["mechanics", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Mechanic",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/mechanics/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["mechanics", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Service Tickets",
+      "item": [
+        {
+          "name": "Create Service Ticket",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicle_id\": 1,\n  \"service_desc\": \"Oil change and brake inspection\",\n  \"price\": 120.5,\n  \"status\": \"pending\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/service-tickets/",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-tickets", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Service Tickets",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/service-tickets/",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-tickets", ""]
+            }
+          }
+        },
+        {
+          "name": "Assign Mechanic",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/service-tickets/1/assign-mechanic/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-tickets", "1", "assign-mechanic", "1"]
+            }
+          }
+        },
+        {
+          "name": "Remove Mechanic",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/service-tickets/1/remove-mechanic/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-tickets", "1", "remove-mechanic", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
